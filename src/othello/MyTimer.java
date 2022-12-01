@@ -19,12 +19,12 @@ public class MyTimer extends JLabel {
         this.timerTask = new TimerTask() {
             @Override
             public void run() {
-                if (seconds == 60) {
-                    seconds = 0;
-                    minutes++;
+                if (MyTimer.this.seconds == 60) {
+                    MyTimer.this.seconds = 0;
+                    MyTimer.this.minutes++;
                 }
-                setText(timerFormat(minutes, seconds));
-                seconds++;
+                setText(timerFormat(MyTimer.this.minutes, MyTimer.this.seconds));
+                MyTimer.this.seconds++;
             }
         };
 
