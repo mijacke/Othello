@@ -22,11 +22,17 @@ public enum Direction {
     LEFT(-1, 0),
     UP_LEFT(-1, -1);
 
+    /**
+     * Final field for position X.
+     */
     private final int x;
+    /**
+     * Final field for position Y.
+     */
     private final int y;
 
     /**
-     * Constructor for various directions on x-axis and y-axis <br>
+     * Constructor for various directions on x-axis and y-axis.<br>
      * @param x changes on x-axis
      * @param y changes on y-axis
      */
@@ -35,10 +41,18 @@ public enum Direction {
         this.y = y;
     }
 
+    /**
+     * Getter for position X.
+     * @return position X
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Getter for position Y.
+     * @return position Y
+     */
     public int getY() {
         return y;
     }
