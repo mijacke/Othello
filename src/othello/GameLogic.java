@@ -9,6 +9,10 @@ public class GameLogic {
         this.gameRender = gameRender;
     }
 
+    /**
+     * All game-board <code>Ovals</code> (Stones) are going to be set to
+     * <code>un-clickable</code> using this method
+     */
     private void setClickableFalse() {
         int boardSize = this.gameRender.getBoardSize();
         for (int i = 0; i < boardSize; i++) {
@@ -18,6 +22,11 @@ public class GameLogic {
         }
     }
 
+    /**
+     *
+     * @return the <code>sum</code> of all current <code>Stones</code>
+     * placed on board
+     */
     private int placedStonesOnBoard() {
         int stonesOnBoard = 0;
         for (Stone[] stones : this.gameRender.getStones()) {
@@ -30,6 +39,12 @@ public class GameLogic {
         return stonesOnBoard;
     }
 
+    /**
+     * Method for calculating the summary of <code>placed</code>
+     * Stones according to the parameter.
+     * @param player the player whose Stones will be calculated
+     * @return the summary of <code>calculated</code> Stones
+     */
     private int playerStonesOnBoard(Player player) {
         int stones = 0;
         for (Stone[] pole : this.gameRender.getStones()) {
@@ -51,7 +66,7 @@ public class GameLogic {
         int whiteStones = playerStonesOnBoard(this.gameRender.getPlayer2());
         String gameState = "Game over, ";
         if(blackStones == whiteStones) { // draw
-            gameState += ": draw";
+            gameState += "draw!";
         }else{
             gameState += "the winner is: " + getWinner(whiteStones, blackStones).getName();
         }
