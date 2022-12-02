@@ -21,14 +21,7 @@ public enum Direction {
     DOWN_LEFT(-1, 1),
     LEFT(-1, 0),
     UP_LEFT(-1, -1);
-
-    /**
-     * Final field for position X.
-     */
     private final int x;
-    /**
-     * Final field for position Y.
-     */
     private final int y;
 
     /**
