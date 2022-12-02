@@ -11,7 +11,7 @@ public class GameLogic {
 
     /**
      * All game-board <code>Ovals</code> (Stones) are going to be set to
-     * <code>un-clickable</code> using this method
+     * <code>un-clickable</code> using this method.
      */
     private void setClickableFalse() {
         int boardSize = this.gameRender.getBoardSize();
@@ -23,9 +23,8 @@ public class GameLogic {
     }
 
     /**
-     *
-     * @return the <code>sum</code> of all current <code>Stones</code>
-     * placed on board
+     * <code>Summary</code> of all placed <code>Stones</code> on the game-board.
+     * @return the sum of all current <code>Stones</code> placed on board.
      */
     private int placedStonesOnBoard() {
         int stonesOnBoard = 0;
@@ -40,10 +39,10 @@ public class GameLogic {
     }
 
     /**
-     * Method for calculating the summary of <code>placed</code>
-     * Stones according to the parameter.
+     * <code>Summary</code> of all placed <code>Stones</code> on the game-board,
+     * but now by just <code>one</code> of the players.
      * @param player the player whose Stones will be calculated
-     * @return the summary of <code>calculated</code> Stones
+     * @return the summary of stones <code>owned</code> by the player.
      */
     private int playerStonesOnBoard(Player player) {
         int stones = 0;
@@ -57,10 +56,22 @@ public class GameLogic {
         return stones;
     }
 
+    /**
+     * Checks and returns which player has more stones after calling this method.
+     * @param whiteStones number of stones of the <code>White</code> player.
+     * @param blackStones number of stones of the <code>Black</code> player.
+     * @return player that has more stones.
+     */
     private Player getWinner(int whiteStones, int blackStones) {
         return whiteStones < blackStones ? gameRender.getPlayer1() : gameRender.getPlayer2();
     }
 
+    /**
+     * Method called in {@link #checkAllDirections()}, which
+     * automatically calculate which player has more stones on
+     * the board and accordingly write the winner
+     * into the showMessageDialog of the JOptionPane property.
+     */
     private void gameOver() {
         int blackStones = playerStonesOnBoard(this.gameRender.getPlayer1());
         int whiteStones = playerStonesOnBoard(this.gameRender.getPlayer2());
@@ -74,6 +85,12 @@ public class GameLogic {
         JOptionPane.showMessageDialog(this.gameRender, gameState);
         this.gameRender.resetBoard();
     }
+
+    /**
+     * One of the main logics used in this game. <br>
+     *
+     * @param stone is the current stone from which we iterate.
+     */
     public void flip(Stone stone) {
         int x = stone.getX();
         int y = stone.getY();
