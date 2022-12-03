@@ -5,16 +5,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Class whose task is to add a JComboBox menu for the player to choose a size
+ * of the game, a button which will confirm the selection. It also creates a
+ * timer for players to see exactly how long they have been playing and additional information
+ * panel which shows some basic things like player colors or current player on the turn.
+ */
 public class RightFramePanel extends JPanel implements ActionListener {
     private final GameRender gameRender;
     private final JComboBox<Integer> comboBox;
     private final MyTimer myTimer;
 
+    /**
+     * Constructor of the panel.
+     *
+     * @param gameRender the rendering of the game.
+     */
     public RightFramePanel(GameRender gameRender) {
-/*        this.setLayout(new GridBagLayout());
- *        GridBagConstraints constraints = new GridBagConstraints();
- *        constraints.anchor = GridBagConstraints.FIRST_LINE_START;
- */
+        /*        this.setLayout(new GridBagLayout());
+         *        GridBagConstraints constraints = new GridBagConstraints();
+         *        constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+         */
         this.setLayout(null); ////////////////////
         this.setPreferredSize(new Dimension(175, 0)); ////////////////////
 
@@ -29,14 +40,14 @@ public class RightFramePanel extends JPanel implements ActionListener {
         changeSizeButton.addActionListener(this);
         changeSizeButton.addKeyListener(this.gameRender);
 
-/*        constraints.gridY = 0;
- *        this.add(this.comboBox, constraints);
- *        this.add(changeSizeButton, constraints);
- *
- *        constraints.gridY = 2;
- *        constraints.gridWidth = 2;
- *        this.add(myTimer, constraints);
- */
+        /*        constraints.gridY = 0;
+         *        this.add(this.comboBox, constraints);
+         *        this.add(changeSizeButton, constraints);
+         *
+         *        constraints.gridY = 2;
+         *        constraints.gridWidth = 2;
+         *        this.add(myTimer, constraints);
+         */
         // setting the exact bounds in the panel
         this.comboBox.setBounds(2, 2, 50, 20); ////////////////////
         changeSizeButton.setBounds(55, 2, 120, 20); ////////////////////
@@ -50,6 +61,11 @@ public class RightFramePanel extends JPanel implements ActionListener {
         this.setBackground(Color.getHSBColor(0.33f, 0.3f, 0.3f));
     }
 
+    /**
+     * Method which display some useful information to the players.
+     *
+     * @param g the <code>Graphics</code> object which draws the text to the panel
+     */
     public void gameInfo(Graphics g) {
         g.setFont(new Font("sans-serif", Font.BOLD, 12));
         g.setColor(Color.WHITE);
@@ -60,20 +76,32 @@ public class RightFramePanel extends JPanel implements ActionListener {
         g.drawString(String.format("Game size: %1$4d x %1$d", this.gameRender.getBoardSize()), 26, 172);
         g.drawString(String.format("Turn: %s ", this.gameRender.getPlayerOnTurn().getName()), 50, 300);
     }
+
+    /**
+     * Overridden method for listening to user input. <br>
+     * If you press the 'CHANGE' button a new game will be created with
+     * a selected size, the timer will also reset.
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.comboBox.getSelectedItem() != null) {
             int boardSize = (int) this.comboBox.getSelectedItem();
             this.gameRender.newGameChangedSize(boardSize);
-
             this.myTimer.reset();
         }
     }
+
+    /**
+     * Overridden method for painting the game info on the panel.
+     *
+     * @param g the <code>Graphics</code> context in which to paint
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        gameInfo(g);
-        repaint();
+        this.gameInfo(g);
+        super.repaint();
     }
-
 }
