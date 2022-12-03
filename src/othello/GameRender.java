@@ -13,7 +13,7 @@ public class GameRender extends JPanel implements KeyListener, ActionListener {
      private final Player player1;
     private final Player player2;
     private final GameLogic gameLogic;
-    private Player playerOnMove;
+    private Player playerOnTurn;
     public GameRender(int cols) {
         this.boardSize = cols;
         super.setLayout(new GridLayout(cols, cols));
@@ -21,7 +21,7 @@ public class GameRender extends JPanel implements KeyListener, ActionListener {
         this.gameLogic = new GameLogic(this);
         this.player1 = new Player(Color.BLACK, "BLACK");
         this.player2 = new Player(Color.WHITE, "WHITE");
-        this.playerOnMove = this.player1;
+        this.playerOnTurn = this.player1;
 
         this.drawBoard();
     }
@@ -49,7 +49,7 @@ public class GameRender extends JPanel implements KeyListener, ActionListener {
  */       this.gameLogic.checkAllDirections();
     }
     public void resetBoard() {
-        this.playerOnMove = this.player1;
+        this.playerOnTurn = this.player1;
         super.removeAll();
         super.revalidate();
         super.repaint();
@@ -62,18 +62,18 @@ public class GameRender extends JPanel implements KeyListener, ActionListener {
         resetBoard();
     }
     public void flipPlayerTurn() {
-        if(this.playerOnMove == this.player1){
-            this.playerOnMove = this.player2;
+        if(this.playerOnTurn == this.player1){
+            this.playerOnTurn = this.player2;
         } else {
-            this.playerOnMove = this.player1;
+            this.playerOnTurn = this.player1;
         }
     }
     // GETTERS
     public int getBoardSize() {
         return boardSize;
     }
-    public Player getPlayerOnMove() {
-        return this.playerOnMove;
+    public Player getPlayerOnTurn() {
+        return this.playerOnTurn;
     }
     public Stone getStone(int x, int y) {
         return this.stones[x][y];

@@ -112,10 +112,10 @@ public class GameLogic {
 
     /**
      * One of the main logics used in this game. <br>
-     * This method is called in the {@link #checkAllDirections()} method after clicking
-     * {@link othello.Stone#mouseReleased(MouseEvent)}.
-     * It iterates through every {@link othello.Direction} and flips all stones which have his matching stone pair on
-     * *   the other side (there must be a continuous row of opponent stones in-between
+     * This method is called in the {@link othello.Stone#mouseReleased(MouseEvent)} method
+     * after clicking with mouse. It iterates through every {@link othello.Direction} and flips
+     * all stones (there must be a continuous row of opponent stones in-between)
+     * which have it's matching stone pair on the other side.
      *
      * @param stone is the current stone from which we iterate.
      */
@@ -136,8 +136,10 @@ public class GameLogic {
              *                 continue;
              *            }
              */
+
+            Player playerOnTurn = this.gameRender.getPlayerOnTurn();
             Player ownerOfStone;
-            while ((ownerOfStone = gameRender.getStone(tempX, tempY).getPlayer()) != gameRender.getPlayerOnMove()) {
+            while ((ownerOfStone = gameRender.getStone(tempX, tempY).getPlayer()) != playerOnTurn) {
                 if (ownerOfStone == null) {
                     playerStoneFound = false;
                     break;
@@ -149,15 +151,15 @@ public class GameLogic {
                     break;
                 }
             }
-            // System.out.println(playerStoneFound);
+
             if (playerStoneFound) {
                 tempX = x + direction.getX();
                 tempY = y + direction.getY();
 
                 Stone currentStone;
-                while ((currentStone = this.gameRender.getStone(tempX, tempY)).getPlayer() != this.gameRender.getPlayerOnMove()) {
+                while ((currentStone = this.gameRender.getStone(tempX, tempY)).getPlayer() != playerOnTurn) {
                     // System.out.println(tempX + " " + tempY);
-                    currentStone.setPlayer(this.gameRender.getPlayerOnMove());
+                    currentStone.setPlayer(playerOnTurn);
                     tempX += direction.getX();
                     tempY += direction.getY();
                 }
@@ -171,11 +173,9 @@ public class GameLogic {
      * Main logic used in the game. <br>
      * This method check and displays all legal moves which can be made
      * by the particular player and display them as grey Ovals (stones).
-     * After clicking one of the grey stones (if there are some), it
-     * uses {@link #flip(Stone)} method to flip the opponent stones
-     * (only the stones between our stones) to our stones. If there are none
-     * such stones that can be clicked, we switch to the next player's turn.
-     * If the other player has no moves then it ends the game and decide the winner.
+     * If there are none such stones that can be clicked, we switch to the
+     * next player's turn. If the other player has no moves then it
+     * ends the game and decide the winner.
      */
     public void checkAllDirections() {
         this.setClickableFalse();
@@ -184,16 +184,19 @@ public class GameLogic {
         if (currentStonesNumber == maxStoneNumber) {
             this.gameOver();
         }
-        int numberOfClickable = 0;
 
+        int numberOfClickable = 0;
         int boardSize = this.gameRender.getBoardSize();
+
         for (int x = 0; x < boardSize; x++) {
             for (int y = 0; y < boardSize; y++) {
+
                 Player currentPlayer = this.gameRender.getStone(x, y).getPlayer();
-                Player playerOnTurn = this.gameRender.getPlayerOnMove();
+                Player playerOnTurn = this.gameRender.getPlayerOnTurn();
 
                 if (currentPlayer == playerOnTurn) {
                     for (Direction direction : Direction.values()) {
+
                         boolean foundEmpty = false;
                         int tempX = x + direction.getX();
                         int tempY = y + direction.getY();

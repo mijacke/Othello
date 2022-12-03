@@ -58,7 +58,7 @@ public class RightFramePanel extends JPanel implements ActionListener {
         g.drawString(String.format("Player 1: %12s", this.gameRender.getPlayer1().getName()), 26, 142);
         g.drawString(String.format("Player 2: %12s", this.gameRender.getPlayer2().getName()), 26, 157);
         g.drawString(String.format("Game size: %1$4d x %1$d", this.gameRender.getBoardSize()), 26, 172);
-        g.drawString(String.format("Turn: %s ", this.gameRender.getPlayerOnMove().getName()), 50, 300);
+        g.drawString(String.format("Turn: %s ", this.gameRender.getPlayerOnTurn().getName()), 50, 300);
     }
     @Override
     public void actionPerformed(ActionEvent e) {

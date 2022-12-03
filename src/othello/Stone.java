@@ -66,7 +66,7 @@ public class Stone extends JPanel implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         if(this.isClickable) {
-            this.player = this.gameRender.getPlayerOnMove();
+            this.player = this.gameRender.getPlayerOnTurn();
             this.gameLogic.flip(this);
             this.gameRender.flipPlayerTurn();
             this.gameLogic.checkAllDirections();
