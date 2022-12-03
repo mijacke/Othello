@@ -3,11 +3,26 @@ package othello;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class Othello represents the game itself. <br>
+ * There are <code>3 private fields</code>, the first and second being WIDTH and HEIGHT
+ * and these are actually just <code>immutable</code> class parameters which determines the width
+ * and height of the frame in which everything is displayed. The last parameter
+ * is also an immutable class parameter which determines the initial size
+ * of the board (note the frame itself!). <br>
+ * This class consist of <code>main</code> frame with right panel (where we can see some information
+ * about the current game, and we can also change the size of the game there) and a 'restart' button
+ * which can reset the game after clicking. <br>
+ * At the end, it sets the location of the frame to the center of the screen and set is visible for the user.
+ */
 public class Othello {
     private static final int WIDTH = 940; // 840
     private static final int HEIGHT = 820; // 720
     private static final int INITIAL_SIZE = 8;
 
+    /**
+     * Constructor that creates the game itself with several amenities such as buttons and menu.
+     */
     public Othello() {
         // MAIN window
         JFrame gameFrame = new JFrame("Othello");
