@@ -3,13 +3,15 @@ package othello;
 /**
  * Enumeration class Direction - enum for better
  * iteration on the x-axis and y-axis. <br>
- * Inspiration and implementation from week T11 - Train
+ * There are 8 directions in total: <br>
+ * UP, UP_RIGHT, RIGHT, DOWN_RIGHT, DOWN, DOWN_LEFT, LEFT, UP_LEFT <br>
  * <ul>
  *    <li>0: represents zero movement in direction</li>
  *    <li>1: represents movement to the right in x-axis, downward in y-axis</li>
  *    <li>-1: represents movement to the left in x-axis, upward in y-axis</li>
  * </ul>
  *
+ * Inspiration and implementation from week T11 - Train.
  * @author Mário Laššú
  */
 public enum Direction {
