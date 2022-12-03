@@ -5,6 +5,11 @@ import java.util.Timer;
 import javax.swing.*;
 import java.util.TimerTask;
 
+/**
+ * This is the class which is used to display the current playing time. <br>
+ * This class has private fields minutes and seconds, which are pre-formatted
+ * and also immediately displayed to the user on the {@link RightFramePanel}.
+ */
 public class MyTimer extends JLabel {
     private final TimerTask timerTask;
     private int minutes;
