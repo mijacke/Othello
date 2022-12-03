@@ -7,6 +7,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * This class is the class which contains the main rendering of the game. <br>
+ * It has methods which can render the initial board, reset it or even set a new
+ * game with a selected size. It also implements listeners for better user experience.
+ */
 public class GameRender extends JPanel implements KeyListener, ActionListener {
     private int boardSize;
     private Stone[][] stones;
