@@ -2,9 +2,28 @@ package othello;
 
 import javax.swing.*;
 
+/**
+ * This class is the class which have the main game logic. <br>
+ * <ul>
+ *   <li>Firstly, it sets all Ovals (player stones) to un-clickable, and
+ *   checks if the player's current stones are equal to <br>
+ *   (board width * board height) and ends the game if that's the case.</li>
+ *   <li>Secondly, it iterates through the whole game board one by one (left-to-right) <br>
+ *   and checks whether there can be a stone which have his matching stone pair on
+ *   the other side (there must be a continuous row of opponent stones in-between).</li>
+ *   <li>Lastly, it repaints all Ovals (stones) which suits and sets them
+ *   clickable for the player which is currently on move. </li>
+ * </ul>
+ */
 public class GameLogic {
     private final GameRender gameRender;
     private static int playerFlips = 0;
+
+    /**
+     * Constructor for game logic which works hand in hand
+     * with the render of the game.
+     * @param gameRender the render which we will use
+     */
     public GameLogic(GameRender gameRender) {
         this.gameRender = gameRender;
     }
@@ -135,6 +154,10 @@ public class GameLogic {
         this.gameRender.repaint();
     }
 
+    /**
+     * Main logic used in the game. <br>
+     *
+     */
     public void checkAllDirections() {
         this.setClickableFalse();
         int currentStonesNumber = placedStonesOnBoard();
