@@ -170,7 +170,7 @@ public class GameLogic {
     }
 
     /**
-     * Main logic used in the game. <br>
+     * <code>Main Logic</code> used in the game. <br>
      * This method check and displays all legal moves which can be made
      * by the particular player and display them as grey Ovals (stones).
      * If there are none such stones that can be clicked, we switch to the
