@@ -13,6 +13,8 @@ import java.awt.event.MouseListener;
  * which can either mean that the stone is clickable or not. Last two fields
  * are gameRender and gameLogic which are needed for us to see these stones
  * but mainly for stones because they contain some logics of the game.
+ *
+ * @author Mário Laššú
  */
 public class Stone extends JPanel implements MouseListener {
     private Player player;

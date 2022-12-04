@@ -15,6 +15,8 @@ import java.awt.event.MouseEvent;
  *   <li>Lastly, it repaints all Ovals (stones) which suits and sets them
  *   clickable for the player which is currently on the move. </li>
  * </ul>
+ *
+ * @author Mário Laššú
  */
 public class GameLogic {
     private final GameRender gameRender;

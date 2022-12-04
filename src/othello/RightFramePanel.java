@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
  * of the game, a button which will confirm the selection. It also creates a
  * timer for players to see exactly how long they have been playing and additional information
  * panel which shows some basic things like player colors or current player on the turn.
+ *
+ * @author Mário Laššú
  */
 public class RightFramePanel extends JPanel implements ActionListener {
     private final GameRender gameRender;

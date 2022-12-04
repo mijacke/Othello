@@ -14,6 +14,8 @@ import java.awt.*;
  * about the current game, and we can also change the size of the game there) and a 'restart' button
  * which can reset the game after clicking. <br>
  * At the end, it sets the location of the frame to the center of the screen and set is visible for the user.
+ *
+ * @author Mário Laššú
  */
 public class Othello {
     private static final int WIDTH = 940; // 840
@@ -30,12 +32,12 @@ public class Othello {
         gameFrame.setSize(WIDTH, HEIGHT);
         gameFrame.setResizable(false);
 
+        // JMenuBar - MAIN window bar
+        new UpperFramePanel(gameFrame);
+
         // Game render
         GameRender render = new GameRender(INITIAL_SIZE);
 
-        // JMenuBar - MAIN window bar
-        UpperFramePanel upperPanel = new UpperFramePanel(gameFrame);
-        gameFrame.setJMenuBar(upperPanel);
 
         // Right panel Layout
         JPanel panel = new JPanel();

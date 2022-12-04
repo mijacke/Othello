@@ -6,6 +6,8 @@ package othello;
  * which calls all others, and it also can't return values). This
  * method can be invoked by Java Virtual Machine without instantiating
  * the class.
+ *
+ * @author Mário Laššú
  */
 public class OthelloStarter {
     public static void main(String[] args) {
