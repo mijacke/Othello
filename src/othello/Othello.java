@@ -38,13 +38,12 @@ public class Othello {
         // Game render
         GameRender render = new GameRender(INITIAL_SIZE);
 
-
         // Right panel Layout
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(Color.getHSBColor(0.3f, 0.3f, 0.2f));
 
-        // JSlider or JComboBox - Right panel + size of game
+        // JSlider or JComboBox - Right panel + size of the game
         RightFramePanel rightPanel = new RightFramePanel(render);
 
         // restart button
