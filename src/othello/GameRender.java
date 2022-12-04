@@ -1,7 +1,9 @@
 package othello;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.GridLayout;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -114,7 +116,7 @@ public class GameRender extends JPanel implements KeyListener, ActionListener {
      * @return the size of the board
      */
     public int getBoardSize() {
-        return boardSize;
+        return this.boardSize;
     }
 
     /**

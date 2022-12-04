@@ -41,7 +41,7 @@ public enum Direction {
      * @return position X
      */
     public int getX() {
-        return x;
+        return this.x;
     }
 
     /**
@@ -49,6 +49,6 @@ public enum Direction {
      * @return position Y
      */
     public int getY() {
-        return y;
+        return this.y;
     }
 }

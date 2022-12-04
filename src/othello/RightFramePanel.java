@@ -1,7 +1,12 @@
 package othello;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -58,7 +63,7 @@ public class RightFramePanel extends JPanel implements ActionListener {
         // Adding to panel + background-color
         this.add(this.comboBox);
         this.add(changeSizeButton);
-        this.add(myTimer);
+        this.add(this.myTimer);
         this.comboBox.setFocusable(false);
         this.setBackground(Color.getHSBColor(0.33f, 0.3f, 0.3f));
     }
@@ -89,7 +94,7 @@ public class RightFramePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.comboBox.getSelectedItem() != null) {
-            int boardSize = (int) this.comboBox.getSelectedItem();
+            int boardSize = (int)this.comboBox.getSelectedItem();
             this.gameRender.newGameChangedSize(boardSize);
             this.myTimer.reset();
         }

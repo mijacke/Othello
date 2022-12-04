@@ -1,6 +1,6 @@
 package othello;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.awt.event.MouseEvent;
 
 /**
@@ -89,7 +89,7 @@ public class GameLogic {
      * @return player that has more stones.
      */
     private Player getWinner(int whiteStones, int blackStones) {
-        return whiteStones < blackStones ? gameRender.getPlayer1() : gameRender.getPlayer2();
+        return whiteStones < blackStones ? this.gameRender.getPlayer1() : this.gameRender.getPlayer2();
     }
 
     /**
@@ -99,13 +99,13 @@ public class GameLogic {
      * into the showMessageDialog of the JOptionPane property.
      */
     private void gameOver() {
-        int blackStones = playerStonesOnBoard(this.gameRender.getPlayer1());
-        int whiteStones = playerStonesOnBoard(this.gameRender.getPlayer2());
+        int blackStones = this.playerStonesOnBoard(this.gameRender.getPlayer1());
+        int whiteStones = this.playerStonesOnBoard(this.gameRender.getPlayer2());
         String gameState = "Game over, ";
         if (blackStones == whiteStones) { // draw
             gameState += "draw!";
         } else {
-            gameState += "the winner is: " + getWinner(whiteStones, blackStones).getName();
+            gameState += "the winner is: " + this.getWinner(whiteStones, blackStones).getName();
         }
 
         JOptionPane.showMessageDialog(this.gameRender, gameState);
@@ -141,7 +141,7 @@ public class GameLogic {
 
             Player playerOnTurn = this.gameRender.getPlayerOnTurn();
             Player ownerOfStone;
-            while ((ownerOfStone = gameRender.getStone(tempX, tempY).getPlayer()) != playerOnTurn) {
+            while ((ownerOfStone = this.gameRender.getStone(tempX, tempY).getPlayer()) != playerOnTurn) {
                 if (ownerOfStone == null) {
                     playerStoneFound = false;
                     break;
@@ -158,12 +158,13 @@ public class GameLogic {
                 tempX = x + direction.getX();
                 tempY = y + direction.getY();
 
-                Stone currentStone;
-                while ((currentStone = this.gameRender.getStone(tempX, tempY)).getPlayer() != playerOnTurn) {
+                Stone currentStone = this.gameRender.getStone(tempX, tempY);
+                while (currentStone.getPlayer() != playerOnTurn) {
                     // System.out.println(tempX + " " + tempY);
                     currentStone.setPlayer(playerOnTurn);
                     tempX += direction.getX();
                     tempY += direction.getY();
+                    currentStone = this.gameRender.getStone(tempX, tempY);
                 }
                 currentStone.setClickable(true);
             }
@@ -181,7 +182,7 @@ public class GameLogic {
      */
     public void checkAllDirections() {
         this.setClickableFalse();
-        int currentStonesNumber = placedStonesOnBoard();
+        int currentStonesNumber = this.placedStonesOnBoard();
         int maxStoneNumber = this.gameRender.getBoardSize() * this.gameRender.getBoardSize();
         if (currentStonesNumber == maxStoneNumber) {
             this.gameOver();

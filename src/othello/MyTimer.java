@@ -1,8 +1,9 @@
 package othello;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.Timer;
-import javax.swing.*;
+import javax.swing.JLabel;
 import java.util.TimerTask;
 
 /**
@@ -37,7 +38,7 @@ public class MyTimer extends JLabel {
                     MyTimer.this.seconds = 0;
                     MyTimer.this.minutes++;
                 }
-                setText(timerFormat(MyTimer.this.minutes, MyTimer.this.seconds));
+                setText(MyTimer.this.timerFormat(MyTimer.this.minutes, MyTimer.this.seconds));
                 MyTimer.this.seconds++;
             }
         };

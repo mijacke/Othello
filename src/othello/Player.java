@@ -1,6 +1,6 @@
 package othello;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Class for creating players who will play against each other.
@@ -30,7 +30,7 @@ public class Player {
      * @return the player's color
      */
     public Color getColor() {
-        return color;
+        return this.color;
     }
 
     /**
@@ -39,6 +39,6 @@ public class Player {
      * @return the player's name
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 }

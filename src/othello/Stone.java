@@ -1,7 +1,8 @@
 package othello;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -66,7 +67,7 @@ public class Stone extends JPanel implements MouseListener {
         g.setColor(Color.BLACK);  // rectangle color
         g.drawRect(0, 0, this.getWidth(), this.getHeight());
         if (this.player != null) {
-            g.setColor(player.getColor());
+            g.setColor(this.player.getColor());
             g.fillOval(10, 10, this.getWidth() - 20, this.getHeight() - 20);
             g.setColor(Color.BLACK);
         }
@@ -84,7 +85,7 @@ public class Stone extends JPanel implements MouseListener {
      */
     @Override
     public int getX() {
-        return x;
+        return this.x;
     }
 
     /**
@@ -94,7 +95,7 @@ public class Stone extends JPanel implements MouseListener {
      */
     @Override
     public int getY() {
-        return y;
+        return this.y;
     }
 
     /**

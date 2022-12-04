@@ -1,7 +1,11 @@
 package othello;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.BorderLayout;
 
 /**
  * This class Othello represents the game itself. <br>
